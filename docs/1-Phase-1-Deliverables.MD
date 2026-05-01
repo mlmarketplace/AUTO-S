@@ -7,7 +7,7 @@ Tools/Skills: Problem framing, user persona definition, workflow mapping, requir
 
 ### Identify the primary user persona and daily workflow
 
-The personas are defined [here](docs/1-Phase-Personas.MD)
+The personas are defined [here](docs/1-Phase-2-Personas.MD)
 
 ### Document the exact problem to be solved
 
@@ -22,4 +22,8 @@ The inputs, outputs, constraints and assumptions are defined [here](docs/1-Phase
 The example questions are defined [here](docs/1-Phase-5-example-user-questions.MD)
 ### Define success criteria
 
+The success criteria is defined [here](docs/1-Phase-6-success-criteria.MD)
+
 ### List known failure cases and edge scenarios
+
+The known failures and edge scenarios are defined [here](docs/1-Phase-7-failure-cases-and-edge-scenarios.MD)
