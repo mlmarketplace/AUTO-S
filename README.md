@@ -1,4 +1,4 @@
-# AUTO-SSS
+# AUTO-S
 ## Autonomous Terraform Operations & Support Platform
 ## Built for Stability, Security, and Scalability of enterprise terraform platform
 ### Reduces MTTR and support load for Terraform Enterprise platform teams across the organization
@@ -14,6 +14,20 @@ intelligence, AUTO-S reduces MTTR, minimizes manual support effort, and standard
 safer outcomes for both the platform team and the business teams they support.
 
 ---
+
+## Architecture Overview
+![AUTO-S Architecture](docs/auto_s_architecture_diagram.svg)
+
+Layer highlights:
+
+* Business Teams → Interaction Layer — entry point for devs, SREs, FinOps, and security engineers (Personas doc)
+* Orchestrator — classifies intent across failure / policy / cost / support categories
+* 4 Specialist Agents — color-coded by domain (coral = failure, amber = policy, green = cost, blue = support)
+* Safety & Governance — sits between all agents and external tools, enforcing the zero-unsafe-action constraint from the success criteria
+* MCP Tool Layer — the gateway that prevents any direct agent-to-API calls, per your constraints
+* State Intelligence Service — handles drift detection, dependency graphs, and historical snapshots
+* Backend  — runs/plans, policy engine (Sentinel/OPA), and cost/usage data
+
 
 ## Phase 1: Understand the Problem & Define Success
 
@@ -343,17 +357,6 @@ The system is designed for real-world uncertainty:
 
 ## Architecture Overview
 
-![AUTO-S Architecture](docs/auto_s_architecture_diagram.svg)
-
-Layer highlights:
-
-* Business Teams → Interaction Layer — entry point for devs, SREs, FinOps, and security engineers (Personas doc)
-* Orchestrator — classifies intent across failure / policy / cost / support categories
-* 4 Specialist Agents — color-coded by domain (coral = failure, amber = policy, green = cost, blue = support)
-* Safety & Governance — sits between all agents and external tools, enforcing the zero-unsafe-action constraint from the success criteria
-* MCP Tool Layer — the gateway that prevents any direct agent-to-API calls, per your constraints
-* State Intelligence Service — handles drift detection, dependency graphs, and historical snapshots
-* Backend  — runs/plans, policy engine (Sentinel/OPA), and cost/usage data
 
 AUTO-S follows a layered, safety-first architecture:
 
