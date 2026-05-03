@@ -1,0 +1,14 @@
+User: Terraform run failed due to state lock
+Agent (fallback): Detected possible state lock issue. Suggested fix: unlock_state.
+
+User: Why did my policy fail?
+Agent (fallback): Terraform run failure detected. Please check logs and retry.
+
+User: Can I delete this resource in production?
+Agent (fallback): Sorry, I cannot understand the request. Please provide more details.
+
+User: Which resources are over-provisioned?
+Agent (fallback): Sorry, I cannot understand the request. Please provide more details.
+
+User: exit
+Exiting...

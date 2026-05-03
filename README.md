@@ -518,3 +518,151 @@ These limitations motivate the need for:
 - LLM-driven reasoning with structured outputs
 
 ---
+
+
+## Phase 3: Make the Agent Smarter 
+
+### LLM Integration & Prompt Design: Objective
+Enhance the baseline agent by integrating a Large Language Model (LLM) to enable semantic understanding, structured reasoning, and safety-aware decision-making.
+
+---
+
+## Implementation
+
+### LLM Integration
+- Integrated LLM into the existing agent workflow (not as a standalone component)
+- Passed contextual inputs:
+  - user query
+  - detected intent (from rule-based router)
+- Implemented structured response handling with JSON parsing and fallback to rule-based logic
+
+---
+
+### Prompt Design Strategy
+
+Three prompt variants were designed and tested to evaluate how prompt structure impacts agent behavior:
+
+#### Prompt V1 — Baseline (Unstructured)
+- Free-text response
+- No constraints or structure
+- Purpose: establish baseline LLM behavior
+
+#### Prompt V2 — Structured Output
+- Enforces JSON response format
+- Introduces basic reasoning fields:
+  - intent
+  - root cause
+  - suggested fix
+- Improves consistency but lacks safety controls
+
+#### Prompt V3 — Safety + Reasoning (Selected)
+- Adds enterprise constraints:
+  - no guessing
+  - no unsafe actions
+  - escalation for uncertainty
+- Produces structured, explainable outputs:
+  - status (success / refusal / escalation)
+  - risk level
+  - confidence
+  - reasoning and evidence
+
+---
+
+## Prompt Comparison
+
+| Scenario | V1 (Unstructured) | V2 (Structured) | V3 (Safety + Reasoning) |
+|--------|------------------|----------------|--------------------------|
+| State lock failure | Generic explanation | JSON output | JSON + reasoning + confidence |
+| Policy issue | Vague | Structured | Detailed + compliant |
+| Delete resource (prod) | Suggests deletion ❌ | Suggests deletion ❌ | Refuses action ✅ |
+| Ambiguous query | Guesses ❌ | Guesses ❌ | Escalates safely ✅ |
+
+---
+
+## Key Insights
+
+### V1 → V2 Improvements
+- Introduced structured outputs
+- Improved consistency and parseability
+- Enabled programmatic handling of responses
+
+### V2 → V3 Improvements
+- Added safety constraints (critical for enterprise use)
+- Introduced refusal and escalation mechanisms
+- Enabled explainability (reasoning + evidence)
+- Better alignment with Terraform Enterprise support workflows
+
+---
+
+### New Failure Modes Introduced
+
+While LLM integration improves reasoning, it introduces new challenges:
+
+- **Invalid JSON responses**
+  - Requires parsing safeguards and fallback logic
+
+- **Over-escalation**
+  - Model may escalate safe queries unnecessarily
+
+- **Hallucinated confidence**
+  - Confidence scores are not always reliable
+
+- **Prompt sensitivity**
+  - Small changes in wording affect output significantly
+
+- **Latency & dependency**
+  - Requires API availability and increases response time
+
+---
+
+## Selected Prompt Strategy
+
+### Chosen: Prompt V3 (Safety + Reasoning)
+
+#### Justification
+- Enforces safety-first behavior (critical for Terraform operations)
+- Produces structured, machine-readable output
+- Handles uncertainty through escalation
+- Provides explainability for audit and trust
+
+#### Trade-offs
+- Slight increase in latency
+- Occasional over-refusal or escalation
+- Requires stricter output validation
+
+---
+
+## Why This Matters
+
+This phase demonstrates:
+
+- Effective LLM integration into an existing agent system
+- Thoughtful prompt engineering beyond basic usage
+- Controlled experimentation and comparison of outputs
+- Understanding of real-world limitations of LLM systems
+
+---
+
+## Transition to Next Phase
+
+The current system still lacks:
+
+- Real-time data grounding (Terraform state, runs, policies)
+- Tool-based validation and execution
+- Multi-agent orchestration
+
+These will be addressed in the next phase using:
+- MCP tool integration
+- State intelligence layer
+- Safety and governance agents
+
+---
+
+## Instructions to run
+
+Step 1: pip install -r requirements.txt
+
+Step 2: pip install --upgrade pip (optional)
+
+
+
