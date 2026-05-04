@@ -7,15 +7,19 @@ from responders.cost import handle_cost
 from responders.fallback import handle_fallback
 from logger import log_interaction
 
+# 🔥 Keep Phase 3 style prompt system
+from llm.client import call_llm, load_prompt, safe_parse
 
-from _phase4.llm.client import call_llm, load_prompt, safe_parse
-
-from rag.embedding_store import search
+# 🔥 FAISS retrieval
+from rag.faiss_store import semantic_search
 
 USE_LLM = True
 PROMPT_VERSION = "v3"   # switch between v1, v2, v3
 
 
+# -----------------------------------------
+# RULE-BASED ROUTING
+# -----------------------------------------
 def route_rule_based(intent, user_input):
     if intent == "failure":
         return handle_failure(user_input)
@@ -27,8 +31,46 @@ def route_rule_based(intent, user_input):
         return handle_fallback(user_input)
 
 
+# -----------------------------------------
+# LLM + RAG ROUTING (PHASE 4)
+# -----------------------------------------
+def route_llm_with_rag(intent, user_input):
+
+    # 🔍 Retrieve context
+    retrieved_docs = semantic_search(user_input)
+
+    # ❌ No knowledge → escalate
+    if not retrieved_docs:
+        return {
+            "status": "escalation",
+            "intent": intent,
+            "reason": "No relevant knowledge found"
+        }, None
+
+    context = "\n".join(retrieved_docs)
+
+    # 🔥 Load prompt version (same as Phase 3)
+    template = load_prompt(PROMPT_VERSION)
+
+    # 🔥 Inject context into prompt
+    prompt = template.format(
+        query=user_input,
+        intent=intent,
+        context=context
+    )
+
+    raw_response = call_llm(prompt)
+
+    parsed_response = safe_parse(raw_response)
+
+    return parsed_response, raw_response
+
+
+# -----------------------------------------
+# MAIN AGENT LOOP
+# -----------------------------------------
 def run_agent():
-    print("AUTO-S Agent (Phase 3 - LLM Enabled)\nType 'exit' to quit\n")
+    print("AUTO-S Agent (Phase 4 - RAG + Prompt Versioning)\nType 'exit' to quit\n")
 
     while True:
         user_input = input("User: ")
@@ -39,46 +81,34 @@ def run_agent():
 
         intent = classify_intent(user_input)
 
+        print(f"[DEBUG] Intent: {intent}")
+        print(f"[DEBUG] Prompt Version: {PROMPT_VERSION}")
+
         if USE_LLM:
             parsed, raw = route_llm_with_rag(intent, user_input)
 
             # fallback if parsing fails
-            if parsed.get("status") == "error":
+            if isinstance(parsed, dict) and parsed.get("status") == "error":
                 response = route_rule_based(intent, user_input)
                 print(f"Agent (fallback): {response}\n")
                 log_interaction(user_input, response, intent, mode="fallback")
+
+            elif isinstance(parsed, dict) and parsed.get("status") == "escalation":
+                print(f"Agent (escalation): {parsed}\n")
+                log_interaction(user_input, parsed, intent, mode="escalation")
+
             else:
-                print(f"Agent (LLM Parsed): {parsed}\n")
-                log_interaction(user_input, parsed, intent, mode="llm")
+                print(f"Agent (LLM + RAG): {parsed}\n")
+                log_interaction(user_input, parsed, intent, mode=f"rag_{PROMPT_VERSION}")
 
         else:
             response = route_rule_based(intent, user_input)
             print(f"Agent: {response}\n")
             log_interaction(user_input, response, intent, mode="rule")
 
-# Connect Retrieval to LLM (RAG)
-def route_llm_with_rag(intent, user_input):
 
-    retrieved_docs = search(user_input)
-
-    if not retrieved_docs:
-        return {
-            "status": "escalation",
-            "intent": intent,
-            "reason": "No relevant knowledge found"
-        }
-
-    context = "\n".join(retrieved_docs)
-
-    template = load_prompt(PROMPT_VERSION)
-
-    prompt = template.format(
-        query=user_input,
-        intent=intent,
-        context=context
-    )
-
-    return call_llm(prompt)
-
+# -----------------------------------------
+# ENTRY POINT
+# -----------------------------------------
 if __name__ == "__main__":
     run_agent()

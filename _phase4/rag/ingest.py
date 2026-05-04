@@ -4,22 +4,20 @@ import os
 from dotenv import load_dotenv
 from _phase4.rag.chunker import chunk_text
 from _phase4.rag.embedding_store import embed_text, collection
-from _phase4.rag.embedding_store import chroma
-# -----------------------------------------
-# ENV SETUP
-# -----------------------------------------
-from dotenv import load_dotenv
+
 load_dotenv()
 
-
+# -----------------------------
+# DATA PATH
+# -----------------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_FOLDER = os.path.join(BASE_DIR, "../data")
+DATA_FOLDER = os.path.join(BASE_DIR, "..", "data")
 
+print("Loading data from:", DATA_FOLDER)
 
-
-# -----------------------------------------
+# -----------------------------
 # LOAD DOCUMENTS
-# -----------------------------------------
+# -----------------------------
 def load_documents():
     documents = []
 
@@ -39,9 +37,9 @@ def load_documents():
     return documents
 
 
-# -----------------------------------------
-# SPLIT TEXT INTO CHUNKS
-# -----------------------------------------
+# -----------------------------
+# SPLIT INTO CHUNKS
+# -----------------------------
 def split_into_chunks(documents):
     chunks = []
 
@@ -58,9 +56,9 @@ def split_into_chunks(documents):
     return chunks
 
 
-# -----------------------------------------
-# STORE IN VECTOR DB (CHROMA)
-# -----------------------------------------
+# -----------------------------
+# STORE EMBEDDINGS
+# -----------------------------
 def store_embeddings(chunks):
     for i, chunk in enumerate(chunks):
         embedding = embed_text(chunk["text"])
@@ -75,13 +73,14 @@ def store_embeddings(chunks):
     print(f"Stored {len(chunks)} embeddings in ChromaDB")
 
 
-# -----------------------------------------
-# MAIN PIPELINE
-# -----------------------------------------
+# -----------------------------
+# MAIN
+# -----------------------------
 def ingest():
     documents = load_documents()
     chunks = split_into_chunks(documents)
     store_embeddings(chunks)
+
     print("✅ Knowledge base successfully persisted and indexed (ChromaDB)")
 
 
