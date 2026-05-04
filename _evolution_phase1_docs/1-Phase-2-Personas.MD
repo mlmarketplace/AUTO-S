@@ -20,5 +20,4 @@ for critical business solution's deployment.
 - Ensures policies are enforced
 - Cares about audit logs and traceability
 
-## Daily workflow
 

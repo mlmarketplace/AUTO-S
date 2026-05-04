@@ -1,0 +1,16 @@
+2026-05-04 19:00:17.069615 | Intent: unknown | Mode: fallback
+User: Which resources are over-provisioned?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-04 19:01:43.120648 | Intent: unknown | Mode: fallback
+User: Can I delete this resource in production?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-04 19:01:53.733532 | Intent: failure | Mode: fallback
+User: Why did my policy fail?
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-04 19:02:04.997164 | Intent: failure | Mode: fallback
+User: Terraform run failed due to state lock
+Agent: Detected possible state lock issue. Suggested fix: unlock_state.
+

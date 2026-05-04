@@ -1,0 +1,29 @@
+---
+Coding: Not Required (optional)
+
+Tools/Skills: Problem framing, user persona definition, workflow mapping, requirements writing, 
+  success criteria, edge-case thinking, evaluation planning
+---
+
+### Identify the primary user persona and daily workflow
+
+The personas are defined [here](_evolution_phase1_docs/1-Phase-2-Personas.MD)
+
+### Document the exact problem to be solved
+
+The problem statement is defined [here](_evolution_phase1_docs/1-Phase-3-problem-statement.MD)
+
+### Define inputs, outputs, constraints, and assumptions
+
+The inputs, outputs, constraints and assumptions are defined [here](_evolution_phase1_docs/1-Phase-4-inputs-outputs-constraints-assumptions.MD)
+
+### Write 3–5 example user questions
+
+The example questions are defined [here](_evolution_phase1_docs/1-Phase-5-example-user-questions.MD)
+### Define success criteria
+
+The success criteria is defined [here](_evolution_phase1_docs/1-Phase-6-success-criteria.MD)
+
+### List known failure cases and edge scenarios
+
+The known failures and edge scenarios are defined [here](_evolution_phase1_docs/1-Phase-7-failure-cases-and-edge-scenarios.MD)
