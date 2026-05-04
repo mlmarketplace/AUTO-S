@@ -1,0 +1,48 @@
+Terraform Cost Optimization Guidelines
+
+Over-Provisioned Resources:
+- Large instance types (e.g., t3.large, m5.xlarge) used for low CPU workloads
+- High memory instances without utilization justification
+- Idle or underutilized compute resources
+
+Recommended Actions:
+- Downgrade instance types based on usage metrics
+- Use auto-scaling groups instead of fixed capacity
+- Use spot instances for non-critical workloads
+
+Storage Optimization:
+- Unattached EBS volumes incur cost
+- Over-provisioned storage (e.g., large volumes with low usage)
+
+Recommended Actions:
+- Delete unused volumes
+- Reduce volume size where possible
+- Use lifecycle policies for storage cleanup
+
+Load Balancers:
+- Unused load balancers still incur hourly cost
+
+Recommended Actions:
+- Remove unused load balancers
+- Consolidate where possible
+
+Networking Costs:
+- High data transfer between regions
+- NAT Gateway costs for excessive outbound traffic
+
+Recommended Actions:
+- Keep resources within same region when possible
+- Optimize NAT usage or use VPC endpoints
+
+Terraform-Specific Best Practices:
+- Use modules to standardize resource sizing
+- Tag resources for cost tracking (environment, owner)
+- Regularly review terraform state for unused resources
+
+Cost Monitoring:
+- Integrate with cloud cost tools (AWS Cost Explorer, Azure Cost Management)
+- Set alerts for budget thresholds
+
+Important Notes:
+- Always validate cost optimizations before applying changes in production
+- Some optimizations may impact performance or availability

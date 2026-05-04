@@ -33,7 +33,7 @@ safer outcomes for both the platform team and the business teams they support.
 ---
 
 ## Architecture Overview
-![AUTO-S Architecture](docs/auto_s_architecture_diagram.svg)
+![AUTO-S Architecture](_evolution_phase1_docs/auto_s_architecture_diagram.svg)
 
 Layer highlights:
 
@@ -658,11 +658,32 @@ These will be addressed in the next phase using:
 
 ---
 
+## Phase 4: Add Knowledge & Retrieval
+
+### Retrieval Quality Evaluation
+
+The system evaluates retrieval relevance to ensure that only useful knowledge is injected into responses.
+
+| Query | Retrieved Content | Relevance | Outcome |
+|------|-----------------|----------|--------|
+| State lock issue | Causes + fix steps | High | Accurate response |
+| Policy failure | Policy rules | Medium | Partial improvement |
+| Delete resource | No relevant docs | Low | Escalation |
+
+### Key Takeaways
+- Retrieval improves answer quality when relevant context is found  
+- Missing knowledge triggers safe escalation  
+- Reduces hallucination compared to LLM-only responses  
+
+
+---
 ## Instructions to run
 
 Step 1: pip install -r requirements.txt
 
 Step 2: pip install --upgrade pip (optional)
+
+Step 3: run python agent.py 
 
 
 

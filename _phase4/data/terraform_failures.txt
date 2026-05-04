@@ -1,0 +1,165 @@
+Terraform Failure Scenarios & Troubleshooting Guide
+
+---
+
+[SECTION: STATE LOCK]
+
+Description:
+Terraform state lock occurs when another operation is holding a lock on the state file.
+
+Common Causes:
+- Previous run interrupted
+- Concurrent execution
+- Manual interruption during apply
+
+Symptoms:
+- Error: "Error acquiring the state lock"
+- Run stuck or blocked
+
+Resolution:
+- Ensure no active runs are in progress
+- Use `terraform force-unlock <lock_id>` cautiously
+- Investigate previous failed runs before unlocking
+
+Risk Level: HIGH
+
+---
+
+[SECTION: PROVIDER AUTHENTICATION FAILURE]
+
+Description:
+Terraform cannot authenticate with cloud provider.
+
+Common Causes:
+- Invalid credentials
+- Expired tokens
+- Missing IAM permissions
+
+Symptoms:
+- "Access denied"
+- "Invalid credentials"
+- Provider initialization failure
+
+Resolution:
+- Verify credentials and environment variables
+- Check IAM roles and permissions
+- Refresh tokens or credentials
+
+Risk Level: HIGH
+
+---
+
+[SECTION: MISSING VARIABLES]
+
+Description:
+Required input variables are not provided.
+
+Common Causes:
+- Missing tfvars file
+- Incorrect variable definitions
+
+Symptoms:
+- "Missing required variable"
+- Plan fails before execution
+
+Resolution:
+- Provide required variables
+- Validate variable definitions
+- Use default values where appropriate
+
+Risk Level: LOW
+
+---
+
+[SECTION: RESOURCE ALREADY EXISTS]
+
+Description:
+Terraform tries to create a resource that already exists.
+
+Common Causes:
+- Resource created outside Terraform
+- State not updated
+
+Symptoms:
+- "Resource already exists"
+- Duplicate resource errors
+
+Resolution:
+- Import resource into Terraform state
+- Use `terraform import`
+- Sync state with actual infrastructure
+
+Risk Level: MEDIUM
+
+---
+
+[SECTION: DEPENDENCY FAILURE]
+
+Description:
+Resource creation fails due to dependency issues.
+
+Common Causes:
+- Incorrect resource order
+- Missing dependencies
+
+Symptoms:
+- Partial apply failure
+- Downstream resources failing
+
+Resolution:
+- Define explicit dependencies using `depends_on`
+- Validate resource graph
+
+Risk Level: MEDIUM
+
+---
+
+[SECTION: POLICY FAILURE]
+
+Description:
+Terraform plan fails due to policy violations.
+
+Common Causes:
+- Security rules violated
+- Missing tags
+- Non-compliant configurations
+
+Symptoms:
+- "Policy check failed"
+- Sentinel/OPA rejection
+
+Resolution:
+- Review policy output
+- Fix configuration
+- Re-run plan
+
+Risk Level: HIGH
+
+---
+
+[SECTION: DRIFT DETECTED]
+
+Description:
+Actual infrastructure differs from Terraform state.
+
+Common Causes:
+- Manual changes outside Terraform
+- External automation tools
+
+Symptoms:
+- Unexpected changes in plan
+- Resource mismatch
+
+Resolution:
+- Run `terraform plan` to identify drift
+- Reconcile differences
+- Avoid manual changes outside Terraform
+
+Risk Level: MEDIUM
+
+---
+
+Important Notes:
+- Always review logs before applying fixes
+- Avoid force operations without understanding impact
+- Escalate if root cause is unclear
