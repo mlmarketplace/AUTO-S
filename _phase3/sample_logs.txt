@@ -1,0 +1,64 @@
+2026-05-03 19:05:21.665908 | Intent: failure | Mode: fallback
+User: My terraform run failed due to state lock
+Agent: Detected possible state lock issue. Suggested fix: unlock_state.
+
+2026-05-03 19:05:51.151812 | Intent: failure | Mode: fallback
+User: wy did my policy failed?
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-03 19:10:49.861022 | Intent: failure | Mode: fallback
+User: Terraform run failed due to state lock
+Agent: Detected possible state lock issue. Suggested fix: unlock_state.
+
+2026-05-03 19:11:01.531079 | Intent: failure | Mode: fallback
+User: Why did my policy fail?
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-03 19:11:09.312386 | Intent: unknown | Mode: fallback
+User: Can I delete this resource in production?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-03 19:11:18.323717 | Intent: unknown | Mode: fallback
+User: Which resources are over-provisioned?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-03 19:12:14.033808 | Intent: failure | Mode: fallback
+User: Terraform run failed due to state lock
+Agent: Detected possible state lock issue. Suggested fix: unlock_state.
+
+2026-05-03 19:12:25.500156 | Intent: failure | Mode: fallback
+User: Why did my policy fail?
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-03 19:12:32.405795 | Intent: unknown | Mode: fallback
+User: Can I delete this resource in production?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-03 19:12:39.220383 | Intent: unknown | Mode: fallback
+User: Which resources are over-provisioned?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-03 19:13:24.999141 | Intent: failure | Mode: fallback
+User: Terraform run failed due to state lock
+Agent: Detected possible state lock issue. Suggested fix: unlock_state.
+
+2026-05-03 19:13:33.187522 | Intent: failure | Mode: fallback
+User: Why did my policy fail?
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-03 19:13:39.001991 | Intent: unknown | Mode: fallback
+User: Can I delete this resource in production?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-03 19:13:46.354921 | Intent: unknown | Mode: fallback
+User: Which resources are over-provisioned?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-03 19:20:37.104671 | Intent: failure | Mode: fallback
+User: why did my policy fail?
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-03 20:16:07.324670 | Intent: unknown | Mode: fallback
+User: Can I delete this resource in production?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
