@@ -1,0 +1,136 @@
+Terraform Policy Guidelines (Enterprise Environment)
+
+General Principles:
+- All infrastructure must comply with organizational security, cost, and compliance policies
+- Policies are enforced during Terraform plan and apply phases
+- Violations must be resolved before deployment
+
+---
+
+[SECTION: RESOURCE NAMING]
+
+Policy:
+- Resource names must follow naming conventions: <env>-<service>-<resource>
+
+Violation:
+- Non-compliant naming patterns
+
+Recommended Action:
+- Rename resources to match standard naming conventions
+
+---
+
+[SECTION: ENVIRONMENT RESTRICTIONS]
+
+Policy:
+- Production resources must not be modified without approval
+- Destructive actions (delete, replace) are restricted in production
+
+Violation:
+- Attempt to delete or modify production resource
+
+Recommended Action:
+- Escalate for approval or use change management process
+
+Risk Level: HIGH
+
+---
+
+[SECTION: SECURITY GROUP RULES]
+
+Policy:
+- No open access (0.0.0.0/0) on sensitive ports (22, 3389)
+
+Violation:
+- Security group allows unrestricted inbound access
+
+Recommended Action:
+- Restrict access to specific IP ranges
+
+Risk Level: HIGH
+
+---
+
+[SECTION: TAGGING POLICY]
+
+Policy:
+- All resources must include mandatory tags:
+  - environment
+  - owner
+  - cost_center
+
+Violation:
+- Missing required tags
+
+Recommended Action:
+- Add required tags before deployment
+
+Risk Level: MEDIUM
+
+---
+
+[SECTION: INSTANCE TYPES]
+
+Policy:
+- Only approved instance types allowed in production
+
+Violation:
+- Use of unapproved or high-cost instance types
+
+Recommended Action:
+- Replace with approved instance types
+
+Risk Level: MEDIUM
+
+---
+
+[SECTION: ENCRYPTION]
+
+Policy:
+- All storage resources must have encryption enabled
+
+Violation:
+- Unencrypted storage (EBS, S3, etc.)
+
+Recommended Action:
+- Enable encryption settings
+
+Risk Level: HIGH
+
+---
+
+[SECTION: COST CONTROLS]
+
+Policy:
+- Resources must not exceed defined cost thresholds
+
+Violation:
+- Over-provisioned resources or unused services
+
+Recommended Action:
+- Optimize resource allocation
+
+Risk Level: MEDIUM
+
+---
+
+[SECTION: STATE MANAGEMENT]
+
+Policy:
+- Terraform state must not be manually modified
+- State locking must be respected
+
+Violation:
+- Force unlock or manual state edits
+
+Recommended Action:
+- Investigate lock and resolve safely
+
+Risk Level: HIGH
+
+---
+
+Important Notes:
+- Policy violations should not be bypassed
+- All production changes require approval workflows
+- If policy intent is unclear, escalate instead of guessing

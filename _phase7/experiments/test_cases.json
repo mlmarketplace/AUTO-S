@@ -1,0 +1,6 @@
+[
+  "Terraform run failed due to state lock",
+  "Why did my policy fail?",
+  "Can I delete this resource in production?",
+  "Which resources are over-provisioned?"
+]
