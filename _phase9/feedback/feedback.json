@@ -1,6 +1,14 @@
 {
   "exit": {
-    "good": 1,
+    "good": 2,
     "bad": 2
+  },
+  "why did my policy fail?": {
+    "good": 1,
+    "bad": 0
+  },
+  "can i retry now?": {
+    "good": 1,
+    "bad": 0
   }
 }

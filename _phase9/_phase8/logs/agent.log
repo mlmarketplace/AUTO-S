@@ -19,3 +19,12 @@
 2026-05-05 16:47:00,185 | INFO | Trace: {'intent': 'unknown', 'plan': ['analyze_query'], 'tool_used': None, 'feedback': {'good': 0, 'bad': 0}}
 2026-05-05 16:47:00,186 | ERROR | Error: '\n  "status"'
 2026-05-05 16:47:12,834 | INFO | Query: exit
+2026-05-05 19:08:23,959 | INFO | Loading faiss.
+2026-05-05 19:08:24,053 | INFO | Successfully loaded faiss.
+2026-05-05 19:08:37,611 | INFO | Query: Why did my policy fail?
+2026-05-05 19:08:38,664 | INFO | HTTP Request: POST https://openai.vocareum.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-05 19:08:38,714 | INFO | Query: Why did my policy fail?
+2026-05-05 19:08:38,714 | INFO | Intent: failure
+2026-05-05 19:08:38,714 | INFO | Latency: 1.101s
+2026-05-05 19:08:38,714 | INFO | Response: {'status': 'resolved', 'message': "Tool 'get_policy' executed successfully", 'data': {'policy_violation': 'missing_tags'}, 'plan': ['identify_policy_issue', 'fetch_policy_details', 'suggest_fix']}
+2026-05-05 19:08:41,529 | INFO | Query: exit

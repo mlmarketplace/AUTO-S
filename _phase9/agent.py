@@ -3,33 +3,33 @@ import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 import time
-from _phase8.monitoring.logger import log_info, log_error
+from _phase9.monitoring.logger import log_info, log_error
 
-from _phase8.memory.conversation_memory import ConversationMemory
-from _phase8.planner.planner import create_plan
+from _phase9.memory.conversation_memory import ConversationMemory
+from _phase9.planner.planner import create_plan
 
 memory = ConversationMemory()
 MAX_MEMORY = 5
 
-from _phase8.feedback.feedback_store import FeedbackStore
-from _phase8.adaptation.adaptive_logic import adjust_behavior
+from _phase9.feedback.feedback_store import FeedbackStore
+from _phase9.adaptation.adaptive_logic import adjust_behavior
 
 feedback_store = FeedbackStore()
 
-from router import classify_intent
-from _phase8.responders.failure import handle_failure
-from _phase8.responders.policy import handle_policy
-from _phase8.responders.cost import handle_cost
-from _phase8.responders.fallback import handle_fallback
-from logger import log_interaction, sanitize
+from _phase9.intent_router import classify_intent
+from _phase9.responders.failure import handle_failure
+from _phase9.responders.policy import handle_policy
+from _phase9.responders.cost import handle_cost
+from _phase9.responders.fallback import handle_fallback
+from _phase9.autos_logger import log_interaction, sanitize
 
-from _phase8.tools.tool_registry import TOOLS
+from _phase9.tools.tool_registry import TOOLS
 
 # Keep Phase 3 style prompt system
-from _phase8.llm.client import call_llm, load_prompt, safe_parse
+from _phase9.llm.client import call_llm, load_prompt, safe_parse
 
 # FAISS retrieval
-from _phase8.rag.faiss_store import semantic_search
+from _phase9.rag.faiss_store import semantic_search
 
 USE_LLM = True
 PROMPT_VERSION = "v3"   # switch between v1, v2, v3
