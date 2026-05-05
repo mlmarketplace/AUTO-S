@@ -1,0 +1,18 @@
+2026-05-05 16:10:02,551 | INFO | Loading faiss.
+2026-05-05 16:10:02,596 | INFO | Successfully loaded faiss.
+2026-05-05 16:10:15,273 | INFO | HTTP Request: POST https://openai.vocareum.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-05 16:10:15,492 | INFO | Query: Why did my policy fail?
+2026-05-05 16:10:15,493 | INFO | Intent: failure
+2026-05-05 16:10:15,493 | INFO | Latency: 3.551s
+2026-05-05 16:10:15,493 | INFO | Response: {'status': 'resolved', 'message': "Tool 'get_policy' executed successfully", 'data': {'policy_violation': 'missing_tags'}, 'plan': ['identify_policy_issue', 'fetch_policy_details', 'suggest_fix']}
+2026-05-05 16:10:24,921 | INFO | HTTP Request: POST https://openai.vocareum.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-05 16:10:24,944 | INFO | Trace: {'intent': 'unknown', 'plan': ['analyze_query'], 'tool_used': None, 'feedback': {'good': 0, 'bad': 0}}
+2026-05-05 16:10:24,944 | ERROR | Error: '\n  "status"'
+2026-05-05 16:10:54,386 | INFO | HTTP Request: POST https://openai.vocareum.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-05 16:10:54,430 | INFO | Trace: {'intent': 'unknown', 'plan': ['analyze_query'], 'tool_used': None, 'feedback': {'good': 0, 'bad': 0}}
+2026-05-05 16:10:54,430 | ERROR | Error: '\n  "status"'
+2026-05-05 16:11:10,975 | INFO | HTTP Request: POST https://openai.vocareum.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-05 16:11:10,981 | INFO | Query: state lock
+2026-05-05 16:11:10,981 | INFO | Intent: unknown
+2026-05-05 16:11:10,981 | INFO | Latency: 2.994s
+2026-05-05 16:11:10,981 | INFO | Response: {'status': 'resolved', 'message': "Tool 'unlock_state' executed successfully", 'data': {'workspace': 'dev', 'action': 'unlock', 'status': 'success'}, 'plan': ['identify_issue', 'unlock_state', 'confirm_resolution']}
