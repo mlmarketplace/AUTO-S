@@ -21,7 +21,7 @@ from _phase8.responders.failure import handle_failure
 from _phase8.responders.policy import handle_policy
 from _phase8.responders.cost import handle_cost
 from _phase8.responders.fallback import handle_fallback
-from logger import log_interaction
+from logger import log_interaction, sanitize
 
 from _phase8.tools.tool_registry import TOOLS
 
@@ -151,7 +151,7 @@ def route_llm_with_rag(intent, user_input):
         tool_output = execute_tool(tool_name, params)
         print(f"[DEBUG] Tool output: {tool_output}")
 
-        # ✅ Accept ANY valid tool output
+        # Accept ANY valid tool output
         if isinstance(tool_output, dict) and not tool_output.get("error"):
             return {
                 "status": "resolved",
@@ -239,10 +239,11 @@ def execute_tool(tool_name, params):
 # -----------------------------------------
 
 def run_agent():
-    print("AUTO-S Agent (Phase 8 - Deployment & Monitoring)\nType 'exit' or 'reset'\n")
+    print("AUTO-S Agent (Phase 9 - Safety, Evaluation & Governance)\nType 'exit' or 'reset'\n")
 
     while True:
         user_input = input("User: ")
+        log_info(f"Query: {sanitize(user_input)}")
 
         if user_input.lower() == "exit":
             print("Exiting...")

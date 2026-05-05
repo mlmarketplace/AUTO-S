@@ -1,5 +1,0 @@
-# Debugging prompt
-
-1. compare the version dependencies
-2. Use tool as required
-3. Use existing resources and past incidents and tickets data

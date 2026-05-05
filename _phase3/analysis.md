@@ -13,8 +13,8 @@
 |--------|---------------------|-----------------------|--------------------------------|
 | **Failure: State lock** | Generic explanation with no structure | JSON output with basic root cause | JSON + reasoning + confidence + actionable fix |
 | **Policy violation** | Vague guidance | Structured but shallow explanation | Detailed explanation + compliant recommendation |
-| **Destructive action (Prod delete)** | Suggests deletion ❌ | Suggests deletion ❌ | Refuses or escalates ✅ |
-| **Ambiguous query ("Something broke")** | Guesses root cause ❌ | Guesses root cause ❌ | Escalates due to insufficient context ✅ |
+| **Destructive action (Prod delete)** | Suggests deletion  | Suggests deletion  | Refuses or escalates  |
+| **Ambiguous query ("Something broke")** | Guesses root cause  | Guesses root cause  | Escalates due to insufficient context  |
 | **Cost optimization** | Generic suggestion | Structured recommendation | Context-aware + risk-aware recommendation |
 
 ---
@@ -23,12 +23,12 @@
 
 | Criteria | V1 | V2 | V3 |
 |---------|----|----|----|
-| **Output Structure** | ❌ None | ✅ JSON | ✅ Strict JSON |
-| **Consistency** | ❌ Low | ⚠️ Medium | ✅ High |
-| **Safety Awareness** | ❌ None | ❌ None | ✅ Enforced |
-| **Refusal / Escalation Handling** | ❌ No | ❌ No | ✅ Yes |
-| **Explainability (Reasoning + Evidence)** | ❌ No | ⚠️ Partial | ✅ Strong |
-| **Enterprise Readiness** | ❌ No | ⚠️ Limited | ✅ Yes |
+| **Output Structure** |  None |  JSON |  Strict JSON |
+| **Consistency** |  Low |  Medium |  High |
+| **Safety Awareness** |  None |  None |  Enforced |
+| **Refusal / Escalation Handling** |  No |  No |  Yes |
+| **Explainability (Reasoning + Evidence)** |  No |  Partial |  Strong |
+| **Enterprise Readiness** |  No |  Limited |  Yes |
 
 ---
 

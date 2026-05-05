@@ -1,0 +1,21 @@
+2026-05-05 16:45:59,012 | INFO | Loading faiss.
+2026-05-05 16:45:59,042 | INFO | Successfully loaded faiss.
+2026-05-05 16:46:07,323 | INFO | Loading faiss.
+2026-05-05 16:46:07,350 | INFO | Successfully loaded faiss.
+2026-05-05 16:46:22,142 | INFO | Query: Why did my policy fail?
+2026-05-05 16:46:26,792 | INFO | HTTP Request: POST https://openai.vocareum.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-05 16:46:26,849 | INFO | Query: Why did my policy fail?
+2026-05-05 16:46:26,849 | INFO | Intent: failure
+2026-05-05 16:46:26,849 | INFO | Latency: 4.706s
+2026-05-05 16:46:26,849 | INFO | Response: {'status': 'resolved', 'message': "Tool 'get_policy' executed successfully", 'data': {'policy_violation': 'missing_tags'}, 'plan': ['identify_policy_issue', 'fetch_policy_details', 'suggest_fix']}
+2026-05-05 16:46:50,512 | INFO | Query: can i retry now?
+2026-05-05 16:46:51,581 | INFO | HTTP Request: POST https://openai.vocareum.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-05 16:46:51,985 | INFO | Query: can i retry now?
+2026-05-05 16:46:51,986 | INFO | Intent: followup
+2026-05-05 16:46:51,986 | INFO | Latency: 1.472s
+2026-05-05 16:46:51,986 | INFO | Response: {'status': 'resolved', 'message': 'Yes, the previous issue has been resolved. You can safely retry the Terraform run.', 'based_on': 'memory'}
+2026-05-05 16:46:59,064 | INFO | Query: \exit
+2026-05-05 16:47:00,180 | INFO | HTTP Request: POST https://openai.vocareum.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-05 16:47:00,185 | INFO | Trace: {'intent': 'unknown', 'plan': ['analyze_query'], 'tool_used': None, 'feedback': {'good': 0, 'bad': 0}}
+2026-05-05 16:47:00,186 | ERROR | Error: '\n  "status"'
+2026-05-05 16:47:12,834 | INFO | Query: exit

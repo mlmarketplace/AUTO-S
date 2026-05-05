@@ -16,3 +16,5 @@
 2026-05-05 16:11:10,981 | INFO | Intent: unknown
 2026-05-05 16:11:10,981 | INFO | Latency: 2.994s
 2026-05-05 16:11:10,981 | INFO | Response: {'status': 'resolved', 'message': "Tool 'unlock_state' executed successfully", 'data': {'workspace': 'dev', 'action': 'unlock', 'status': 'success'}, 'plan': ['identify_issue', 'unlock_state', 'confirm_resolution']}
+2026-05-05 16:44:42,739 | INFO | Loading faiss.
+2026-05-05 16:44:42,866 | INFO | Successfully loaded faiss.
