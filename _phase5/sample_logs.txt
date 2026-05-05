@@ -1,0 +1,127 @@
+2026-05-04 21:43:39.171712 | Intent: unknown | Mode: fallback
+User: Which resources are over-provisioned?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-05 10:50:09.425323 | Intent: unknown | Mode: fallback
+User: Which resources are over-provisioned?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-05 10:50:16.113889 | Intent: failure | Mode: fallback
+User: Why did my policy fail?
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-05 10:50:39.121756 | Intent: failure | Mode: fallback
+User: Why did my policy fail?
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-05 11:12:54.841125 | Intent: failure | Mode: fallback
+User: Why did my policy fail?
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-05 11:14:57.517986 | Intent: failure | Mode: fallback
+User: Why did policy fail?
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-05 11:16:14.317603 | Intent: unknown | Mode: fallback
+User: Can I delete this resource in production?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-05 11:16:25.991370 | Intent: failure | Mode: fallback
+User: Terraform run failed due to state lock
+Agent: Detected possible state lock issue. Suggested fix: unlock_state.
+
+2026-05-05 11:20:46.193643 | Intent: failure | Mode: fallback
+User: Why did my policy fail
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-05 11:20:57.531764 | Intent: failure | Mode: fallback
+User: Terraform run failed due to state lock
+Agent: Detected possible state lock issue. Suggested fix: unlock_state.
+
+2026-05-05 11:21:03.294119 | Intent: unknown | Mode: fallback
+User: Can I delete this resource in production?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-05 11:21:09.437371 | Intent: unknown | Mode: fallback
+User: Which resources are over-provisioned?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-05 11:33:45.989604 | Intent: failure | Mode: fallback
+User: why is my policy failing?
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-05 11:38:28.745432 | Intent: unknown | Mode: fallback
+User: Can I delete this resource in production?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-05 11:39:22.610514 | Intent: failure | Mode: fallback
+User: Why did my policy fail?
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-05 11:39:32.519112 | Intent: failure | Mode: rag_v3
+User: Terraform run failed due to state lock
+Agent: {
+  "status": "resolved",
+  "message": "Tool 'unlock_state' executed successfully",
+  "data": {
+    "workspace": "dev",
+    "action": "unlock",
+    "status": "success"
+  }
+}
+
+2026-05-05 11:39:42.827921 | Intent: unknown | Mode: fallback
+User: Which resources are over-provisioned?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-05 11:45:40.009396 | Intent: failure | Mode: fallback
+User: Why did my policy fail?
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-05 11:45:52.514497 | Intent: failure | Mode: rag_v3
+User: Terraform run failed due to state lock
+Agent: {
+  "status": "resolved",
+  "message": "Tool 'unlock_state' executed successfully",
+  "data": {
+    "workspace": "dev",
+    "action": "unlock",
+    "status": "success"
+  }
+}
+
+2026-05-05 11:46:03.066554 | Intent: unknown | Mode: fallback
+User: Which resources are over-provisioned?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-05 11:46:15.343631 | Intent: unknown | Mode: fallback
+User: Can I delete this resource in production?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-05 11:52:42.399376 | Intent: unknown | Mode: rag_v3
+User: an I delete this resource in production?
+Agent: {
+  "status": "blocked",
+  "reason": "Destructive production actions require approval"
+}
+
+2026-05-05 11:53:25.840296 | Intent: failure | Mode: fallback
+User: Why did my policy fail?
+Agent: Terraform run failure detected. Please check logs and retry.
+
+2026-05-05 11:53:45.648139 | Intent: unknown | Mode: fallback
+User: Which resources are over-provisioned?
+Agent: Sorry, I cannot understand the request. Please provide more details.
+
+2026-05-05 11:53:58.587253 | Intent: failure | Mode: rag_v3
+User: Terraform run failed due to state lock
+Agent: {
+  "status": "resolved",
+  "message": "Tool 'unlock_state' executed successfully",
+  "data": {
+    "workspace": "dev",
+    "action": "unlock",
+    "status": "success"
+  }
+}
+

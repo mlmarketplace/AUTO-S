@@ -1,0 +1,2 @@
+User query: {query}
+Explain what might be wrong and suggest a fix.
