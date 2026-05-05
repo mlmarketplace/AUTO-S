@@ -1,4 +1,0 @@
-# System prompt
-
-- Define how the system should behave
-- Define the dos and don'ts in terms of systems capability

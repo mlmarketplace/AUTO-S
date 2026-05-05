@@ -1,4 +1,0 @@
-# Security prompt
-
-- Permissions errors
-- Authentication vs Authorization error

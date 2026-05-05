@@ -1,4 +1,0 @@
-# planning prompt
-
-1. Identify local vs remote state
-2. run plan to verify the apply

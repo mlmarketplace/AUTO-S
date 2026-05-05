@@ -24,7 +24,7 @@ Evaluate how well semantic retrieval returns relevant knowledge for user queries
 2. Causes of state lock
 3. Resolution steps
 
-**Relevance:** High ✅  
+**Relevance:** High   
 **Observation:** Retrieved content directly matches query intent and improves answer accuracy.
 
 ---
@@ -38,7 +38,7 @@ Evaluate how well semantic retrieval returns relevant knowledge for user queries
 1. Policy violation explanation
 2. Compliance rules
 
-**Relevance:** Medium ✅  
+**Relevance:** Medium   
 **Observation:** Useful but lacks run-specific context.
 
 ---
@@ -51,8 +51,8 @@ Evaluate how well semantic retrieval returns relevant knowledge for user queries
 **Top Retrieved Chunks:**  
 None relevant
 
-**Relevance:** Low ❌  
-**System Behavior:** Escalation triggered ✅  
+**Relevance:** Low   
+**System Behavior:** Escalation triggered   
 
 ---
 
