@@ -1,0 +1,6 @@
+{{
+  "intent": "...",
+  "root_cause": "...",
+  "suggested_fix": "...",
+  "confidence": 0.0
+}}

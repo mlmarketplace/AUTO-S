@@ -1,0 +1,29 @@
+/usr/local/bin/python3.12 /Users/abhishekjunnarkar/PycharmProjects/Agentic-iac-platform-cloud-migration-factory/_phase4/agent.py
+FAISS DB PATH: /Users/abhishekjunnarkar/PycharmProjects/Agentic-iac-platform-cloud-migration-factory/_phase4/rag/faiss_index
+AUTO-S Agent (Phase 4 - RAG + Prompt Versioning)
+Type 'exit' to quit
+
+User: Which resources are over-provisioned?
+[DEBUG] Intent: unknown
+[DEBUG] Prompt Version: v3
+Agent (fallback): Sorry, I cannot understand the request. Please provide more details.
+
+User: Can I delete this resource in production?
+[DEBUG] Intent: unknown
+[DEBUG] Prompt Version: v3
+Agent (fallback): Sorry, I cannot understand the request. Please provide more details.
+
+User: Why did my policy fail?
+[DEBUG] Intent: failure
+[DEBUG] Prompt Version: v3
+Agent (fallback): Terraform run failure detected. Please check logs and retry.
+
+User: Terraform run failed due to state lock
+[DEBUG] Intent: failure
+[DEBUG] Prompt Version: v3
+Agent (fallback): Detected possible state lock issue. Suggested fix: unlock_state.
+
+User: exit
+Exiting...
+
+Process finished with exit code 0
