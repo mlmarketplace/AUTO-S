@@ -2,26 +2,31 @@
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
-from _phase6.memory.conversation_memory import ConversationMemory
-from _phase6.planner.planner import create_plan
+from _phase7.memory.conversation_memory import ConversationMemory
+from _phase7.planner.planner import create_plan
 
 memory = ConversationMemory()
 MAX_MEMORY = 5
 
+from _phase7.feedback.feedback_store import FeedbackStore
+from _phase7.adaptation.adaptive_logic import adjust_behavior
+
+feedback_store = FeedbackStore()
+
 from router import classify_intent
-from _phase4.responders.failure import handle_failure
-from _phase4.responders.policy import handle_policy
-from _phase4.responders.cost import handle_cost
-from _phase4.responders.fallback import handle_fallback
+from _phase7.responders.failure import handle_failure
+from _phase7.responders.policy import handle_policy
+from _phase7.responders.cost import handle_cost
+from _phase7.responders.fallback import handle_fallback
 from logger import log_interaction
 
-from _phase5.tools.tool_registry import TOOLS
+from _phase7.tools.tool_registry import TOOLS
 
 # Keep Phase 3 style prompt system
-from _phase4.llm.client import call_llm, load_prompt, safe_parse
+from _phase7.llm.client import call_llm, load_prompt, safe_parse
 
 # FAISS retrieval
-from _phase4.rag.faiss_store import semantic_search
+from _phase7.rag.faiss_store import semantic_search
 
 USE_LLM = True
 PROMPT_VERSION = "v3"   # switch between v1, v2, v3
@@ -106,9 +111,22 @@ def route_llm_with_rag(intent, user_input):
     print(f"[DEBUG] Memory: {memory_context}")
 
     # -----------------------------------------
+    # FEEDBACK-BASED ADAPTATION
+    # -----------------------------------------
+    feedback_stats = feedback_store.get_feedback(user_input)
+    adaptation = adjust_behavior(user_input, feedback_stats)
+
+    print(f"[DEBUG] Feedback stats: {feedback_stats}")
+    print(f"[DEBUG] Adaptation: {adaptation}")
+
+    # -----------------------------------------
     # TOOL SELECTION
     # -----------------------------------------
-    tool_name = select_tool(intent, user_input)
+    if adaptation["action"] == "avoid_tool":
+        tool_name = None
+    else:
+        tool_name = select_tool(intent, user_input)
+
     print(f"[DEBUG] Tool selected: {tool_name}")
 
     tool_output = None
@@ -198,7 +216,7 @@ def execute_tool(tool_name, params):
 # -----------------------------------------
 
 def run_agent():
-    print("AUTO-S Agent (Phase 6 - Planning + Memory)\nType 'exit' or 'reset'\n")
+    print("AUTO-S Agent (Phase 7 - Adaptive Behaviour & Feedback)\nType 'exit' or 'reset'\n")
 
     while True:
         user_input = input("User: ")
@@ -241,7 +259,13 @@ def run_agent():
         else:
             print(f"Agent: {parsed}\n")
 
+    # -----------------------------------------
+    # FEEDBACK COLLECTION
+    # -----------------------------------------
+    feedback = input("Was this helpful? (good/bad/skip): ").strip().lower()
 
+    if feedback in ["good", "bad"]:
+        feedback_store.add_feedback(user_input, feedback)
 
 
 # -----------------------------------------

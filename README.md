@@ -479,6 +479,84 @@ Phase 6 enables AUTO-S to:
 
 This aligns the system with real-world **agentic AI architectures** used in enterprise environments.
 
+## Phase 7: Adaptive Behaviour & Feedback
+
+### Overview
+
+Phase 7 introduces feedback-driven adaptation, enabling AUTO-S to adjust its behavior based on user feedback.
+
+---
+
+## Feedback System
+
+### Type
+- Explicit feedback: `good` / `bad`
+
+### Storage
+- Stored per query in JSON
+- Tracks frequency of positive/negative feedback
+
+---
+
+## Adaptation Logic
+
+| Feedback Pattern | Behavior Change |
+|----------------|---------------|
+| More bad than good | Avoid tools, use safer reasoning |
+| More good than bad | Continue current strategy |
+| No feedback | Default behavior |
+
+---
+
+## Example
+
+### Before Feedback
+
+User: Why did my policy fail?  
+→ Agent uses tool → unclear result  
+
+Feedback: bad  
+
+---
+
+### After Feedback
+
+User: Why did my policy fail?  
+
+Agent:
+- Avoids tool
+- Uses RAG explanation instead  
+
+---
+
+## Behavioral Change
+
+| Aspect | Before | After |
+|------|--------|------|
+| Tool usage | Always triggered | Conditional |
+| Strategy | Static | Adaptive |
+| User experience | Fixed | Personalized |
+
+---
+
+## Limitations
+
+- Feedback tied to exact queries (no generalization)
+- No weighting by user importance
+- No long-term learning beyond session
+
+---
+
+## Conclusion
+
+AUTO-S now adapts its behavior based on feedback, improving:
+
+- response relevance  
+- decision strategy  
+- user satisfaction  
+
+This aligns with real-world AI systems that evolve based on user interaction.
+
 ## How to Run
 
 ```bash

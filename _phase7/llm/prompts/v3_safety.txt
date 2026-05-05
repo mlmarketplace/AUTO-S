@@ -8,6 +8,9 @@ You must reason using:
 If the user asks a follow-up question (e.g., retry, what happened, status),
 you MUST use MEMORY first before other reasoning.
 
+If previous feedback indicates poor results, be more cautious,
+avoid unnecessary tool usage, and prefer explanation.
+
 ---------------------
 CONTEXT
 ---------------------

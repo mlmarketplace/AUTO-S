@@ -9,19 +9,19 @@ memory = ConversationMemory()
 MAX_MEMORY = 5
 
 from router import classify_intent
-from _phase4.responders.failure import handle_failure
-from _phase4.responders.policy import handle_policy
-from _phase4.responders.cost import handle_cost
-from _phase4.responders.fallback import handle_fallback
+from _phase6.responders.failure import handle_failure
+from _phase6.responders.policy import handle_policy
+from _phase6.responders.cost import handle_cost
+from _phase6.responders.fallback import handle_fallback
 from logger import log_interaction
 
-from _phase5.tools.tool_registry import TOOLS
+from _phase6.tools.tool_registry import TOOLS
 
 # Keep Phase 3 style prompt system
-from _phase4.llm.client import call_llm, load_prompt, safe_parse
+from _phase6.llm.client import call_llm, load_prompt, safe_parse
 
 # FAISS retrieval
-from _phase4.rag.faiss_store import semantic_search
+from _phase6.rag.faiss_store import semantic_search
 
 USE_LLM = True
 PROMPT_VERSION = "v3"   # switch between v1, v2, v3
