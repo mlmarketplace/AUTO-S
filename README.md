@@ -370,7 +370,114 @@ TOOLS = {
         "args": ["workspace"]
     }
 }
+```
 ---
+
+## Phase 6: Planning, Memory & Context
+
+### Overview
+
+## Phase 6 enhances AUTO-S with **stateful intelligence** by introducing:
+
+- Multi-step planning
+- Short-term conversational memory
+- Context-aware reasoning across turns
+
+This transforms the agent from a reactive system into a **context-aware decision engine**.
+
+---
+
+## Architecture Update
+
+User → Intent → Memory → Planner → Tool/RAG → Memory Update → Response
+
+---
+
+## Planning Capability
+
+The system decomposes tasks into structured steps:
+
+| Scenario | Plan |
+|--------|------|
+| State Lock | identify_issue → unlock_state → confirm |
+| Policy Failure | identify_issue → fetch_policy → suggest_fix |
+| Cost Optimization | analyze → detect_waste → optimize |
+
+This ensures:
+- structured reasoning  
+- explainable decision flow  
+
+---
+
+## Memory System
+
+### Type: Short-Term Memory
+
+Stores recent interactions:
+
+- user queries  
+- agent responses  
+
+---
+
+### Memory Behavior
+
+| Feature | Implementation |
+|--------|--------------|
+| Retention | Last 5 interactions |
+| Reset | `reset` command |
+| Usage | Injected into LLM prompt |
+
+---
+
+### Example
+
+**Turn 1**
+User: Terraform failed due to state lock  
+→ resolved  
+
+**Turn 2**
+User: Can I retry now?  
+→ Agent uses memory → “Yes, issue was resolved”
+
+---
+
+## Multi-Turn Improvement
+
+| Before | After |
+|------|------|
+| No context awareness | Remembers past issues |
+| Generic answers | Context-aware responses |
+| Stateless | Stateful reasoning |
+
+---
+
+## Impact
+
+- Improved user experience  
+- Reduced repeated explanations  
+- Better decision continuity  
+- More human-like interaction  
+
+---
+
+## Limitations
+
+- Only short-term memory  
+- No long-term persistence  
+- No semantic memory retrieval  
+
+---
+
+## Conclusion
+
+Phase 6 enables AUTO-S to:
+
+- remember context  
+- plan actions  
+- reason across multiple steps  
+
+This aligns the system with real-world **agentic AI architectures** used in enterprise environments.
 
 ## How to Run
 
