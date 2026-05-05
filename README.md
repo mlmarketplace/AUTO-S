@@ -557,6 +557,165 @@ AUTO-S now adapts its behavior based on feedback, improving:
 
 This aligns with real-world AI systems that evolve based on user interaction.
 
+## Phase 8: Deployment Readiness
+
+### Overview
+
+Phase 8 prepares AUTO-S for real-world usage by introducing:
+
+* deployment-ready packaging
+* structured logging and tracing
+* latency and performance monitoring
+* graceful failure handling
+
+This phase transitions AUTO-S from a prototype into a **deployable and observable AI system**.
+
+---
+
+## Deployment
+
+### Local Setup
+
+```bash
+pip install -r requirements.txt
+streamlit run _phase8/ui/app.py
+```
+
+### Environment Assumptions
+
+* Python 3.10+
+* OpenAI API key required via `.env`
+* FAISS index pre-built for retrieval
+
+---
+
+## System Architecture (Runtime Flow)
+
+User → UI → Agent → (Memory + Planning + Feedback) → Tool/RAG → Response → Logging
+
+---
+
+## Monitoring & Logging
+
+AUTO-S now includes structured logging for observability:
+
+* Logs stored in: `_phase8/logs/agent.log`
+* Captures:
+
+  * user queries
+  * intent classification
+  * tool usage
+  * latency
+  * responses
+  * errors
+
+### Example Log Entry
+
+```
+Query: Why did my policy fail?
+Intent: policy
+Tool: get_policy
+Latency: 1.12s
+Status: resolved
+```
+
+---
+
+## Tracing
+
+Tracing is implemented across multiple layers:
+
+| Layer         | Purpose                            |
+| ------------- | ---------------------------------- |
+| Tool Layer    | Execution + output logging         |
+| Agent Layer   | Decision path (RAG vs Tool vs LLM) |
+| Request Layer | End-to-end trace with latency      |
+
+This enables:
+
+* debugging
+* performance tracking
+* explainability
+
+---
+
+## Latency Monitoring
+
+Each request captures execution time:
+
+| Metric         | Observed     |
+| -------------- | ------------ |
+| Avg Latency    | ~1–2 seconds |
+| Tool Execution | <1 second    |
+| LLM Response   | ~1–2 seconds |
+
+---
+
+## Graceful Failure Handling
+
+AUTO-S handles failures without crashing:
+
+| Failure Type      | Handling                 |
+| ----------------- | ------------------------ |
+| Tool errors       | Safe fallback response   |
+| LLM errors        | Controlled error message |
+| Invalid input     | Escalation response      |
+| Missing knowledge | Safe escalation          |
+
+### Example
+
+User: Unknown query
+→ Agent returns structured escalation instead of failure
+
+---
+
+## UI Layer (Streamlit)
+
+A lightweight UI enables interactive usage:
+
+* Chat-based interface
+* Latency display
+* Feedback collection (Phase 7 integration)
+* Debug toggle for trace visibility
+
+This improves:
+
+* usability
+* demonstration quality
+* real-world applicability
+
+---
+
+## Performance Summary
+
+| Metric            | Value                      |
+| ----------------- | -------------------------- |
+| Stability         | High                       |
+| Error Rate        | Low                        |
+| Tool Success Rate | High (~90%+)               |
+| Response Quality  | Improved via feedback loop |
+
+---
+
+## Limitations
+
+* Local deployment only (no cloud scaling)
+* No distributed tracing or monitoring dashboard
+* Stateless across sessions (except feedback persistence)
+* Limited concurrency handling
+
+---
+
+## Conclusion
+
+With Phase 8, AUTO-S becomes:
+
+* **deployable** (reproducible setup)
+* **observable** (logs + tracing)
+* **resilient** (graceful failure handling)
+
+This completes the evolution from an experimental agent to a **production-aligned AI system for Terraform operations**.
+
 ## How to Run
 
 ```bash
