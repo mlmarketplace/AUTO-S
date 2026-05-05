@@ -324,6 +324,52 @@ FAISS-based RAG transforms the agent into a:
 
 👉 **Context-aware, safety-first decision system**
 
+## Phase 5: Tool-Using Agent
+
+### Overview
+
+Phase 5 extends AUTO-S from a reasoning system into an **action-capable agent** by enabling controlled tool usage.
+
+The agent can now:
+- Decide **when** to use a tool  
+- Select the **correct tool** based on user intent  
+- Execute tools safely  
+- Incorporate tool outputs into reasoning  
+- Prevent unsafe or incorrect actions  
+
+This transforms the system from:
+> “AI that explains problems” → “AI that can act on problems safely”
+
+---
+
+## Tool Design
+
+Tools are designed to reflect realistic Terraform Enterprise operations.
+
+### Implemented Tools
+
+| Tool | Purpose | Example Use |
+|-----|--------|------------|
+| `get_run_status` | Fetch Terraform run status | Debug failed run |
+| `unlock_state` | Unlock Terraform state | Resolve state lock |
+
+---
+
+## Tool Registry
+
+All tools are centrally defined in a registry for consistency and scalability.
+
+```python
+TOOLS = {
+    "get_run_status": {
+        "description": "Fetch Terraform run status",
+        "args": ["run_id"]
+    },
+    "unlock_state": {
+        "description": "Unlock Terraform state",
+        "args": ["workspace"]
+    }
+}
 ---
 
 ## How to Run
