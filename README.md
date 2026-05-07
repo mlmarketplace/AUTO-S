@@ -157,6 +157,23 @@ AUTO-S is a structured AI agent system combining:
 
 ---
 
+## Architecture Diagram
+
+![AUTO-S Architecture Diagram](_evolution_phase1_docs/auto_s_architecture_diagram.svg)
+
+
+## Phased Documentation
+
+- [Phase 1 – Deliverables](_evolution_phase1_docs/1-Phase-1-Deliverables.MD)
+- [Phase 2 – Personas](_evolution_phase1_docs/1-Phase-2-Personas.MD)
+- [Phase 3 – Problem Statement](_evolution_phase1_docs/1-Phase-3-problem-statement.MD)
+- [Phase 4 – Inputs, Outputs, Constraints](_evolution_phase1_docs/1-Phase-4-inputs-outputs-constraints-assumptions.MD)
+- [Phase 5 – Example User Questions](_evolution_phase1_docs/1-Phase-5-example-user-questions.MD)
+- [Phase 6 – Success Criteria](_evolution_phase1_docs/1-Phase-6-success-criteria.MD)
+- [Phase 7 – Failure Cases & Edge Scenarios](_evolution_phase1_docs/1-Phase-7-failure-cases-and-edge-scenarios.MD)
+
+- [High Level Architecture Notes](_evolution_phase1_docs/high-level-architecture.md)
+---
 ## System Maturity and Roadmap
 
 AUTO-S is an actively evolving system being developed with a focus on real-world infrastructure workflows and 
