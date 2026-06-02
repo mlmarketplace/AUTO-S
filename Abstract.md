@@ -63,7 +63,18 @@ Supports proactive monitoring, automated diagnostics, guided remediation workflo
 
 Demonstrates how organizations can evolve from manually coordinating engineering activities to orchestrating repeatable, scalable, governance-aware delivery workflows powered by AI and organizational knowledge.
 
+###  Intent-to-Ecxecution-lifecycle
 
+1. Understands intent
+2. Reviews requirements
+3. Evaluates security requirements
+4. Compares cloud options
+5. Selects architecture
+6. Generates implementation artifacts
+7. Validates governance
+8. Creates deployment plan
+9. Executes workflows
+10. Learns from outcome
 
 ### Key Takeaways
 
